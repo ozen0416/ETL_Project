@@ -153,19 +153,8 @@ temp_min, temp_max, temp_moy, humidité moyenne, précipitations totales, pressi
 **Base de données :** `database/climat_france.db` (SQLite)
 
 ### Schéma relationnel
+<img width="859" height="486" alt="shema relat" src="https://github.com/user-attachments/assets/58cd9d62-51c4-40dd-bb9b-9ff8047e2e8c" />
 
-```
-villes (id, nom, latitude, longitude, elevation, timezone)
-  │
-  ├──< mesures_horaires (id, ville_id, datetime, temperature_2m, humidite_relative,
-  │                       precipitations, pression_surface, temperature_ressentie,
-  │                       proba_precipitations, saison, tranche_horaire,
-  │                       confort_thermique, pluie)
-  │
-  └──< agregats_journaliers (id, ville_id, date, annee, mois, temp_min, temp_max,
-                              temp_moy, humidite_moy, precipitations_totales,
-                              pression_moy, heures_pluie)
-```
 
 Les clés étrangères sont activées (`PRAGMA foreign_keys = ON`).  
 Des contraintes `UNIQUE (ville_id, datetime)` évitent les doublons en base.
